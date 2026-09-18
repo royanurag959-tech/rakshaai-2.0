@@ -3,7 +3,7 @@ import type {
   EvidenceRecord, FamilyMember, User, AuthResponse, AlertNotification
 } from '../types';
 
-const API_BASE_URL = typeof window !== 'undefined' && window.location.port === '5173' ? '/api' : 'http://127.0.0.1:8000/api';
+const API_BASE_URL = '/api';
 
 // Offline Storage Keys
 const OFFLINE_INCIDENTS_KEY = 'raksha_offline_incidents';
@@ -12,15 +12,10 @@ export const api = {
   // Check backend availability
   async ping(): Promise<boolean> {
     try {
-      const res = await fetch(`${API_BASE_URL}/device-guard/status`, { method: 'GET', signal: AbortSignal.timeout(2500) });
+      const res = await fetch(`${API_BASE_URL}/device-guard/status`, { method: 'GET', signal: AbortSignal.timeout(3000) });
       return res.ok;
     } catch {
-      try {
-        const res2 = await fetch('http://127.0.0.1:8000/', { method: 'GET', signal: AbortSignal.timeout(2500) });
-        return res2.ok;
-      } catch {
-        return false;
-      }
+      return false;
     }
   },
 
