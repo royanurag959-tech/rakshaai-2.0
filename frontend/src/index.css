@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-cyber-900 text-slate-100 font-sans antialiased min-h-screen selection:bg-blue-600 selection:text-white;
+    background-image: 
+      radial-gradient(ellipse at 50% -20%, rgba(26, 115, 232, 0.18), transparent 70%),
+      radial-gradient(circle at 10% 20%, rgba(0, 210, 255, 0.05), transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.05), transparent 40%),
+      linear-gradient(rgba(7, 12, 24, 0.95), rgba(7, 12, 24, 0.98)),
+      linear-gradient(to right, rgba(30, 49, 86, 0.15) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(30, 49, 86, 0.15) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+    background-attachment: fixed;
+  }
+}
+
+/* Custom cyber glow and card styling */
+.cyber-glow {
+  box-shadow: 0 0 30px -5px rgba(26, 115, 232, 0.35);
+}
+
+.cyber-glow-cyan {
+  box-shadow: 0 0 30px -5px rgba(0, 210, 255, 0.35);
+}
+
+.cyber-glow-red {
+  box-shadow: 0 0 35px -5px rgba(239, 68, 68, 0.45);
+}
+
+.cyber-glow-green {
+  box-shadow: 0 0 30px -5px rgba(16, 185, 129, 0.35);
+}
+
+.cyber-glow-purple {
+  box-shadow: 0 0 30px -5px rgba(168, 85, 247, 0.35);
+}
+
+/* Glassmorphism Panel with High-Tech Edge Highlight */
+.glass-panel {
+  background: rgba(13, 21, 39, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(30, 49, 86, 0.85);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel:hover {
+  border-color: rgba(59, 130, 246, 0.45);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 12px 40px -10px rgba(26, 115, 232, 0.2);
+}
+
+/* Futuristic HUD Corner Accents */
+.hud-card {
+  position: relative;
+}
+
+.hud-card::before, .hud-card::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.hud-card::before {
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid rgba(0, 210, 255, 0.6);
+  border-left: 2px solid rgba(0, 210, 255, 0.6);
+  border-top-left-radius: 4px;
+}
+
+.hud-card::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 2px solid rgba(0, 210, 255, 0.6);
+  border-right: 2px solid rgba(0, 210, 255, 0.6);
+  border-bottom-right-radius: 4px;
+}
+
+.hud-card:hover::before, .hud-card:hover::after {
+  width: 14px;
+  height: 14px;
+  border-color: #00d2ff;
+}
+
+/* Animated Cyber Grid Pulse */
+@keyframes cyber-radar-sweep {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.radar-sweep {
+  animation: cyber-radar-sweep 4s linear infinite;
+}
+
+/* Continuous Marquee Ticker for Live Cyber Threats */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Futuristic Holographic Text Gradient */
+.text-hologram {
+  background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 40%, #00d2ff 80%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Shimmer Button Effect */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.btn-shimmer {
+  background-size: 200% auto;
+  animation: shimmer 3s infinite linear;
+}

@@ -1,0 +1,42 @@
+# Node / Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/*.local
+frontend/.env
+frontend/.env.local
+frontend/.env.*.local
+
+# Python / Backend
+backend/__pycache__/
+backend/*/__pycache__/
+backend/*/*/__pycache__/
+backend/*.pyc
+backend/*.pyo
+backend/*.pyd
+backend/.pytest_cache/
+backend/.coverage
+backend/htmlcov/
+backend/*.sqlite3
+backend/*.db
+backend/data/*.db
+backend/.env
+backend/venv/
+backend/.venv/
+venv/
+.venv/
+env/
+.env
+
+# Uploads & Temp Media
+uploads/*
+!uploads/.gitkeep
+
+# Operating System & IDE
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.log
+*.tmp
