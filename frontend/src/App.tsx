@@ -224,7 +224,6 @@ const MainApp: React.FC = () => {
         }}
         isOnline={isOnline}
         onOpenAuth={() => setIsAuthModalOpen(true)}
-        onOpenShare={() => setIsShareModalOpen(true)}
         onOpenAlerts={() => {
           setAlertPrefill({});
           setIsAlertModalOpen(true);
