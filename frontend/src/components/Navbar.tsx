@@ -1,7 +1,8 @@
 import React from 'react';
 import {
   Shield, AlertTriangle, PhoneCall, Wifi, WifiOff, Users,
-  BookOpen, LayoutDashboard, Lock, Languages, User as UserIcon, LogOut, Bell, Send, ShieldCheck
+  BookOpen, LayoutDashboard, Lock, Languages, User as UserIcon, LogOut, Bell, Send, ShieldCheck,
+  Smartphone, QrCode
 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { useAuth } from '../context/AuthContext';
@@ -12,9 +13,10 @@ interface NavbarProps {
   isOnline: boolean;
   onOpenAuth?: () => void;
   onOpenAlerts?: () => void;
+  onOpenShare?: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, isOnline, onOpenAuth, onOpenAlerts }) => {
+export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, isOnline, onOpenAuth, onOpenAlerts, onOpenShare }) => {
   const { language, setLanguage, t } = useLanguage();
   const { user, isAuthenticated, logout } = useAuth();
 
@@ -168,6 +170,17 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, isOnlin
 
           {/* Action buttons */}
           <div className="flex items-center space-x-2">
+            {onOpenShare && (
+              <button
+                onClick={onOpenShare}
+                className="bg-cyan-950/80 hover:bg-cyan-900 border border-cyan-500/50 text-cyan-300 hover:text-white px-3 py-2 rounded-lg text-xs font-bold flex items-center space-x-1.5 transition-all shadow-md shadow-cyan-500/20"
+                title={language === 'HI' ? 'मोबाइल फोन पर चलाएं / QR कोड व लिंक' : 'Open on Mobile Phone / QR & Links'}
+              >
+                <Smartphone className="w-3.5 h-3.5 text-cyan-400" />
+                <span className="hidden sm:inline">{language === 'HI' ? '📱 फोन लिंक' : '📱 Phone Demo'}</span>
+              </button>
+            )}
+
             {onOpenAlerts && (
               <button
                 onClick={onOpenAlerts}

@@ -7,6 +7,7 @@ import { DemoScenarioBar } from './components/DemoScenarioBar';
 import { OfflineBanner } from './components/OfflineBanner';
 import { AuthModal } from './components/AuthModal';
 import { AlertDispatcherModal } from './components/AlertDispatcherModal';
+import { ShareModal } from './components/ShareModal';
 import type { DemoScenario } from './services/mockScenarios';
 import { api } from './services/api';
 
@@ -35,6 +36,7 @@ const MainApp: React.FC = () => {
   const [selectedIncidentId, setSelectedIncidentId] = useState<number>(1);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState<boolean>(false);
   const [isAlertModalOpen, setIsAlertModalOpen] = useState<boolean>(false);
+  const [isShareModalOpen, setIsShareModalOpen] = useState<boolean>(false);
   const [alertPrefill, setAlertPrefill] = useState<{ phone?: string; template?: string; message?: string; riskLevel?: string }>({});
   const { language } = useLanguage();
 
@@ -222,6 +224,7 @@ const MainApp: React.FC = () => {
         }}
         isOnline={isOnline}
         onOpenAuth={() => setIsAuthModalOpen(true)}
+        onOpenShare={() => setIsShareModalOpen(true)}
         onOpenAlerts={() => {
           setAlertPrefill({});
           setIsAlertModalOpen(true);
@@ -240,6 +243,12 @@ const MainApp: React.FC = () => {
       <AuthModal
         isOpen={isAuthModalOpen}
         onClose={() => setIsAuthModalOpen(false)}
+      />
+
+      {/* Live Phone & QR Demo Share Modal */}
+      <ShareModal
+        isOpen={isShareModalOpen}
+        onClose={() => setIsShareModalOpen(false)}
       />
 
       {/* Automated Fraud Victim Alert Dispatcher Modal */}
